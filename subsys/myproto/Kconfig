@@ -1,0 +1,24 @@
+#
+# Copyright (c) 2021 Nordic Semiconductor ASA
+#
+# SPDX-License-Identifier: LicenseRef-Nordic-5-Clause
+#
+
+menuconfig MYPROTO
+	bool "MyProto protocol subsystem"
+	select NRFX_PPI if HAS_HW_NRF_PPI
+	select NRFX_DPPI if HAS_HW_NRF_DPPIC
+	default n
+	help
+	  Enable MyProto protocol functionality.
+
+if MYPROTO
+
+config MYPROTO_RETURN_VALUE
+	int "Return value for the init function"
+	default 0
+	range -256 0
+	help
+	  The return value returned by the myproto_init() call.
+
+endif # MYPROTO
